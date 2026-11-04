@@ -1,0 +1,146 @@
+
+/* CSS Variables */
+:root {
+    --primary: #101d42;
+    --accent: #ffcc00;
+    --background: #f4f4f4;
+    --text: #222222;
+}
+
+/* Body */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: var(--background);
+    color: var(--text);
+}
+
+/* Navigation Bar */
+nav {
+    background-color: var(--primary);
+    color: white;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav h2 {
+    color: var(--accent);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #101d42, #304f91);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+    margin-top: 65px;
+}
+
+.btn {
+    background-color: var(--accent);
+    color: var(--primary);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Sections */
+section {
+    padding: 30px;
+    margin: 20px;
+}
+
+h2 {
+    color: var(--primary);
+    text-align: center;
+}
+
+/* About Section */
+.about {
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+}
+
+th {
+    background-color: var(--primary);
+    color: white;
+}
+
+td, th {
+    padding: 12px;
+    border: 1px solid #cccccc;
+    text-align: center;
+}
+
+/* Booking Form */
+.booking-container {
+    display: flex;
+    gap: 20px;
+}
+
+.booking-form, .summary {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #cccccc;
+    flex: 1;
+}
+
+input, select {
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+}
+
+/* Guidelines */
+.guideline-container {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 2px 2px 5px #cccccc;
+    flex: 1;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .booking-container,
+    .guideline-container {
+        flex-direction: column;
+    }
+}
