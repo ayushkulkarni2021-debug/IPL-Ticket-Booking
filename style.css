@@ -1,146 +1,113 @@
-
-/* CSS Variables */
-:root {
-    --primary: #101d42;
-    --accent: #ffcc00;
-    --background: #f4f4f4;
-    --text: #222222;
-}
-
-/* Body */
+/* Basic page styling */
 body {
-    margin: 0;
     font-family: Arial, sans-serif;
-    background-color: var(--background);
-    color: var(--text);
+    margin: 0;
+    padding-top: 90px;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
-/* Navigation Bar */
+/* Navigation bar */
 nav {
-    background-color: var(--primary);
+    background-color: #17365d;
     color: white;
-    padding: 15px;
+    padding: 12px 20px;
     position: fixed;
     top: 0;
     width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    box-sizing: border-box;
 }
 
 nav h2 {
-    color: var(--accent);
+    display: inline-block;
+    margin-right: 30px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
+    margin-right: 15px;
 }
 
 nav a:hover {
-    color: var(--accent);
+    color: gold;
 }
 
-/* Hero Section */
+/* Hero section */
 .hero {
-    background: linear-gradient(to right, #101d42, #304f91);
+    background: linear-gradient(to right, #17365d, #4472a5);
     color: white;
     text-align: center;
-    padding: 80px 20px;
-    margin-top: 65px;
+    padding: 45px 20px;
 }
 
+/* Buttons */
 .btn {
-    background-color: var(--accent);
-    color: var(--primary);
-    padding: 10px 20px;
+    display: inline-block;
+    background-color: #e0a526;
+    color: black;
+    padding: 10px 18px;
     text-decoration: none;
     border-radius: 5px;
+    margin: 5px;
+}
+
+.btn:hover {
+    background-color: #c58b12;
 }
 
 /* Sections */
 section {
-    padding: 30px;
-    margin: 20px;
-}
-
-h2 {
-    color: var(--primary);
-    text-align: center;
-}
-
-/* About Section */
-.about {
     background-color: white;
-    border-radius: 10px;
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 /* Tables */
 table {
-    width: 100%;
     border-collapse: collapse;
+    width: 100%;
     background-color: white;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
 }
 
 th {
-    background-color: var(--primary);
+    background-color: #17365d;
     color: white;
 }
 
-td, th {
-    padding: 12px;
-    border: 1px solid #cccccc;
-    text-align: center;
-}
-
-/* Booking Form */
-.booking-container {
-    display: flex;
-    gap: 20px;
-}
-
-.booking-form, .summary {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 2px 2px 5px #cccccc;
-    flex: 1;
-}
-
+/* Booking form */
 input, select {
-    padding: 10px;
-    margin: 8px 0;
-    border: 1px solid #cccccc;
-    border-radius: 5px;
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
 }
 
-/* Guidelines */
-.guideline-container {
-    display: flex;
-    gap: 20px;
+button {
+    background-color: #17365d;
+    color: white;
+    padding: 9px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
 
-.card {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 2px 2px 5px #cccccc;
-    flex: 1;
+button:hover {
+    background-color: #4472a5;
 }
 
 /* Footer */
 footer {
-    background-color: var(--primary);
+    background-color: #17365d;
     color: white;
     text-align: center;
-    padding: 20px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .booking-container,
-    .guideline-container {
-        flex-direction: column;
-    }
+    padding: 15px;
 }
