@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IPL Ticket Booking Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <h2>IPL 2026</h2>
+        <a href="index.html">Home</a>
+        <a href="index.html#matches">Matches</a>
+        <a href="booking.html">Book Ticket</a>
+    </nav>
+
+    <section>
+        <h2>Ticket Booking Form</h2>
+
+        <form action="#" method="get" class="booking-form">
+
+            <label>Name:</label>
+            <input type="text" name="name"
+                   placeholder="Enter your name"
+                   minlength="3" maxlength="30" required>
+
+            <br><br>
+
+            <label>Email:</label>
+            <input type="email" name="email"
+                   placeholder="Enter your email" required>
+
+            <br><br>
+
+            <label>Phone Number:</label>
+            <input type="tel" name="phone"
+                   placeholder="Enter 10 digit number"
+                   pattern="[0-9]{10}"
+                   minlength="10" maxlength="10" required>
+
+            <br><br>
+
+            <label>Select Match:</label>
+            <select name="match" required>
+                <option value="">Choose Match</option>
+                <option>CSK vs MI</option>
+                <option>RCB vs KKR</option>
+                <option>RR vs SRH</option>
+                <option>MI vs RCB</option>
+            </select>
+
+            <br><br>
+
+            <label>Stand Category:</label>
+            <select name="stand" required>
+                <option value="">Choose Stand</option>
+                <option>General</option>
+                <option>Premium</option>
+                <option>VIP</option>
+            </select>
+
+            <br><br>
+
+            <label>Number of Tickets:</label>
+            <input type="number" name="tickets"
+                   min="1" max="10" required>
+
+            <br><br>
+
+            <label>Additional Preference:</label>
+            <br>
+            <input type="radio" name="preference" value="Normal">
+            Normal Seating
+
+            <input type="radio" name="preference" value="Near Ground">
+            Near Ground
+
+            <br><br>
+
+            <button type="submit" class="btn">Submit</button>
+            <button type="reset" class="btn">Reset</button>
+
+        </form>
+    </section>
+
+    <footer>
+        <p>Copyright © 2026 IPL Ticket Booking</p>
+    </footer>
+
+</body>
+</html>
