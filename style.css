@@ -111,3 +111,14 @@ footer {
     text-align: center;
     padding: 15px;
 }
+/* Toast Message */
+.toast {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #101d42;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
