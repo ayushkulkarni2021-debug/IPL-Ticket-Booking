@@ -1,0 +1,24 @@
+.hero {
+  background: linear-gradient(to right, #17365d, #4472a5);
+  color: white;
+  text-align: center;
+  padding: 60px 20px 40px;
+  margin-top: 60px; /* offset for fixed navbar */
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
