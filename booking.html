@@ -1,9 +1,12 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IPL Ticket Booking Form</title>
     <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
 </head>
 
 <body>
@@ -18,7 +21,8 @@
     <section>
         <h2>Ticket Booking Form</h2>
 
-        <form action="#" method="get" class="booking-form">
+        <form action="#" method="get"
+              class="booking-form" id="bookingForm">
 
             <label>Name:</label>
             <input type="text" name="name"
@@ -42,34 +46,36 @@
             <br><br>
 
             <label>Select Match:</label>
-            <select name="match" required>
+            <select name="match" id="match" required>
                 <option value="">Choose Match</option>
-                <option>CSK vs MI</option>
-                <option>RCB vs KKR</option>
-                <option>RR vs SRH</option>
-                <option>MI vs RCB</option>
+                <option value="CSK vs MI">CSK vs MI</option>
+                <option value="RCB vs KKR">RCB vs KKR</option>
+                <option value="RR vs SRH">RR vs SRH</option>
+                <option value="MI vs RCB">MI vs RCB</option>
             </select>
 
             <br><br>
 
             <label>Stand Category:</label>
-            <select name="stand" required>
+            <select name="stand" id="stand" required>
                 <option value="">Choose Stand</option>
-                <option>General</option>
-                <option>Premium</option>
-                <option>VIP</option>
+                <option value="General">General</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
             </select>
 
             <br><br>
 
             <label>Number of Tickets:</label>
             <input type="number" name="tickets"
-                   min="1" max="10" required>
+                   id="quantity"
+                   min="1" max="10" value="1" required>
 
             <br><br>
 
             <label>Additional Preference:</label>
             <br>
+
             <input type="radio" name="preference" value="Normal">
             Normal Seating
 
@@ -82,6 +88,33 @@
             <button type="reset" class="btn">Reset</button>
 
         </form>
+    </section>
+
+    <!-- Booking Summary Card -->
+    <section class="summary-card">
+
+        <h2>Booking Summary</h2>
+
+        <p>Match:
+            <span id="summaryMatch">Not selected</span>
+        </p>
+
+        <p>Stand:
+            <span id="summaryStand">Not selected</span>
+        </p>
+
+        <p>Quantity:
+            <span id="summaryQuantity">0</span>
+        </p>
+
+        <p>Price per Ticket:
+            <span>₹<span id="summaryPrice">0</span></span>
+        </p>
+
+        <h3>Total Price: ₹
+            <span id="totalPrice">0</span>
+        </h3>
+
     </section>
 
     <footer>

@@ -16,6 +16,7 @@ nav {
     top: 0;
     width: 100%;
     box-sizing: border-box;
+    z-index: 1000;
 }
 
 nav h2 {
@@ -119,6 +120,76 @@ footer {
     right: 30px;
     background-color: #101d42;
     color: white;
-    padding: 15px;
+    padding: 15px 20px;
     border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+}
+
+/* Activity 7: Booking Layout & Summary Card */
+.booking-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: flex-start;
+}
+
+.booking-container .booking-form {
+    flex: 1 1 340px;
+}
+
+.booking-container .booking-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.booking-container .booking-form input,
+.booking-container .booking-form select {
+    width: 100%;
+    max-width: 420px;
+    box-sizing: border-box;
+    margin: 5px 0 10px 0;
+}
+
+.form-actions {
+    margin-top: 12px;
+}
+
+.summary-card {
+    flex: 1 1 300px;
+    max-width: 500px;
+    margin: 30px auto;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e2e8f0;
+}
+
+.booking-container .summary-card {
+    margin: 10px 0;
+}
+
+.summary-card.updated {
+    border-color: #17365d;
+}
+
+.summary-card h2,
+.summary-card h3 {
+    text-align: center;
+    margin-bottom: 16px;
+}
+
+.summary-card p {
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.summary-card h3:last-child {
+    color: green;
+    margin-top: 20px;
+    margin-bottom: 0;
 }
