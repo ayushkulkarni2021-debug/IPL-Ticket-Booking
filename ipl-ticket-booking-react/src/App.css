@@ -41,6 +41,25 @@ body {
   margin-top: 0;
 }
 
+.booking-summary {
+  max-width: 520px;
+  margin: 20px auto 0;
+  padding: 16px;
+  border: 1px solid #dbe2ea;
+  border-radius: 8px;
+  background-color: #f8fafc;
+  text-align: left;
+}
+
+.booking-summary h3 {
+  margin-top: 0;
+  color: #17365d;
+}
+
+.booking-summary p {
+  margin: 6px 0;
+}
+
 /* Guidelines */
 .guidelines-section {
   background-color: white;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import MatchList from "./components/MatchList";
@@ -6,6 +7,8 @@ import "./App.css";
 // App is the root component.
 // It composes Navbar, Hero, and MatchList — each is a separate reusable component.
 function App() {
+  const [bookingSummary, setBookingSummary] = useState(null);
+
   return (
     <>
       {/* Navbar: logo + responsive hamburger navigation */}
@@ -18,12 +21,24 @@ function App() {
       />
 
       {/* MatchList: renders all MatchCard components with filter and view toggle */}
-      <MatchList />
+      <MatchList onBookingConfirmed={setBookingSummary} />
 
-      {/* Booking placeholder section */}
       <section id="booking" className="booking-placeholder">
         <h2>Book Your Tickets</h2>
-        <p>Select a match above and click <strong>Book</strong> to get started.</p>
+        <p>Select a match above and click <strong>Book</strong> to enter your details.</p>
+        <p>Demo bookings are saved only in this browser and do not reserve real seats.</p>
+        {bookingSummary && (
+          <div className="booking-summary" aria-live="polite">
+            <h3>Booking Summary</h3>
+            <p><strong>Reference:</strong> {bookingSummary.id}</p>
+            <p><strong>Match:</strong> {bookingSummary.match}</p>
+            <p><strong>Date &amp; Time:</strong> {bookingSummary.date}</p>
+            <p><strong>Venue:</strong> {bookingSummary.venue}</p>
+            <p><strong>Ticket:</strong> {bookingSummary.ticketType}</p>
+            <p><strong>Quantity:</strong> {bookingSummary.quantity}</p>
+            <p><strong>Total:</strong> ₹{bookingSummary.total}</p>
+          </div>
+        )}
       </section>
 
       {/* Guidelines section */}

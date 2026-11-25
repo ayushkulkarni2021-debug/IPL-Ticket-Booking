@@ -1,5 +1,6 @@
 import { useState } from "react";
 import MatchCard from "./MatchCard";
+import BookingModal from "./BookingModal";
 import "./MatchList.css";
 
 // Match data — in a real app this could come from an API or parent prop
@@ -42,10 +43,11 @@ const ALL_TEAMS = ["ALL", "CSK", "MI", "RCB", "KKR", "RR", "SRH"];
 
 // MatchList component: renders all MatchCard components.
 // Uses useState for the team filter and selected match.
-function MatchList() {
+function MatchList({ onBookingConfirmed }) {
   const [selectedTeam, setSelectedTeam] = useState("ALL");
   const [toast, setToast] = useState("");
   const [viewMode, setViewMode] = useState("grid"); // "grid" or "list"
+  const [activeMatch, setActiveMatch] = useState(null);
 
   // Filter matches by selected team
   const filteredMatches = MATCHES.filter(function (match) {
@@ -57,16 +59,48 @@ function MatchList() {
     setSelectedTeam(e.target.value);
   }
 
-  function handleBook(matchName) {
-    setToast("Opening booking for " + matchName + "!");
+  function handleBook(match) {
+    setActiveMatch(match);
+  }
+
+  function confirmBooking(match, form) {
+    const booking = {
+      id: "IPL-" + Date.now(),
+      matchId: match.id,
+      match: match.teams,
+      date: match.date,
+      venue: match.venue,
+      name: form.name,
+      email: form.email,
+      ticketType: form.ticketType,
+      quantity: form.quantity,
+      total: form.total,
+      createdAt: new Date().toISOString(),
+    };
+
+    try {
+      const savedBookings = JSON.parse(
+        window.localStorage.getItem("ipl-bookings") || "[]"
+      );
+      if (!Array.isArray(savedBookings)) {
+        return "Could not save booking: stored booking data is invalid.";
+      }
+      window.localStorage.setItem(
+        "ipl-bookings",
+        JSON.stringify([...savedBookings, booking])
+      );
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      return "Could not save booking in this browser: " + errorMessage;
+    }
+
+    setActiveMatch(null);
+    onBookingConfirmed(booking);
+    setToast("Demo booking saved locally. Reference: " + booking.id);
     setTimeout(function () {
       setToast("");
-    }, 3000);
-    // Scroll to booking section
-    const bookingSection = document.getElementById("booking");
-    if (bookingSection) {
-      bookingSection.scrollIntoView({ behavior: "smooth" });
-    }
+    }, 5000);
+    return "";
   }
 
   return (
@@ -124,11 +158,19 @@ function MatchList() {
                 date={match.date}
                 venue={match.venue}
                 prices={match.prices}
-                onBook={handleBook}
+                onBook={function () { handleBook(match); }}
               />
             );
           })}
         </div>
+      )}
+
+      {activeMatch && (
+        <BookingModal
+          match={activeMatch}
+          onClose={function () { setActiveMatch(null); }}
+          onConfirm={confirmBooking}
+        />
       )}
 
       {/* Toast notification */}
