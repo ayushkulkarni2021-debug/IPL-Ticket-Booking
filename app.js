@@ -24,7 +24,72 @@ function showToast(message) {
 }
 
 
-// Smooth scrolling to booking form
+// ACTIVITY 8: RESPONSIVE NAVIGATION HAMBURGER MENU
+
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener("click", function() {
+        const isOpen = navLinks.classList.toggle("open");
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.querySelectorAll("a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            navLinks.classList.remove("open");
+            menuToggle.setAttribute("aria-expanded", "false");
+        });
+    });
+}
+
+
+// ACTIVITY 8: MATCH FILTERING AND GRID/LIST VIEW TOGGLE
+
+const teamFilter = document.getElementById("teamFilter");
+const matchGrid = document.getElementById("matchGrid");
+const matchCards = document.querySelectorAll(".match-card");
+const gridViewBtn = document.getElementById("gridViewBtn");
+const listViewBtn = document.getElementById("listViewBtn");
+
+if (teamFilter && matchCards.length > 0) {
+    teamFilter.addEventListener("change", function() {
+        const selectedTeam = teamFilter.value;
+
+        matchCards.forEach(function(card) {
+            const teams = (card.dataset.teams || "").split(" ");
+            const isMatch = selectedTeam === "ALL" || teams.includes(selectedTeam);
+            card.style.display = isMatch ? "" : "none";
+        });
+
+        if (selectedTeam === "ALL") {
+            showToast("Showing all matches");
+        } else {
+            showToast("Filtered matches for " + selectedTeam);
+        }
+    });
+}
+
+if (matchGrid && gridViewBtn && listViewBtn) {
+    gridViewBtn.addEventListener("click", function() {
+        matchGrid.classList.remove("list-view");
+        gridViewBtn.classList.add("active");
+        listViewBtn.classList.remove("active");
+        gridViewBtn.setAttribute("aria-pressed", "true");
+        listViewBtn.setAttribute("aria-pressed", "false");
+    });
+
+    listViewBtn.addEventListener("click", function() {
+        matchGrid.classList.add("list-view");
+        listViewBtn.classList.add("active");
+        gridViewBtn.classList.remove("active");
+        listViewBtn.setAttribute("aria-pressed", "true");
+        gridViewBtn.setAttribute("aria-pressed", "false");
+    });
+}
+
+
+// Smooth scrolling to booking form (and pre-selecting match when clicked from a match card)
 const scrollButtons = document.querySelectorAll('a[href="#booking"]');
 
 scrollButtons.forEach(function(button) {
@@ -33,6 +98,12 @@ scrollButtons.forEach(function(button) {
 
         if (bookingSection) {
             event.preventDefault();
+
+            const chosenMatch = button.dataset.match;
+            if (chosenMatch && matchSelect) {
+                matchSelect.value = chosenMatch;
+                updateSummary(false);
+            }
 
             bookingSection.scrollIntoView({
                 behavior: "smooth"
